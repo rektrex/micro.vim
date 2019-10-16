@@ -6,6 +6,9 @@ endif
 
 let g:colors_name='micro'
 
+let g:micro_theme_statusline = get(g: , 'micro_theme_statusline', 0)
+let g:micro_coc_status = get(g: , 'micro_coc_status', 0)
+
 set background=dark
 
 " colors ----------------------------------------------------------------------
@@ -52,6 +55,7 @@ hi Ignore         guibg=NONE    guifg=NONE    gui=NONE
 hi EndOfBuffer    guibg=NONE    guifg=#2d2d2d gui=NONE
 hi NonText        guibg=NONE    guifg=#dc322f gui=NONE
 hi SpecialKey     guibg=NONE    guifg=#e76d6d gui=UNDERCURL
+hi Statusline     guibg=NONE    guifg=#6f6f6f gui=UNDERLINE
 
 " Clear & override ------------------------------------------------------------
 
@@ -67,16 +71,56 @@ hi Constant guifg=#d75f87
 hi Tag gui=UNDERLINE
 
 " coc.nvim --------------------------------------------------------------------
+
 hi CocErrorSign   guibg=NONE guifg=#e76d6d
 hi CocWarningSign guibg=NONE guifg=#ff922b
 hi CocInfoSign    guibg=NONE guifg=#fab005
 hi CocHintSign    guibg=NONE guifg=#d75f87
 
 " Help ------------------------------------------------------------------------
+
 hi helpHyperTextJump gui=UNDERLINE
 
 " Typescript ------------------------------------------------------------------
+
 hi link typescriptParens Delimiter
 
 " Vimscript -------------------------------------------------------------------
+
 hi link vimUserFunc Function
+
+" Statusline ------------------------------------------------------------------
+
+if g:micro_theme_statusline==1
+    set statusline=
+    set statusline+=\ %{StatuslineMode()}
+    set statusline+=%=
+    if g:micro_coc_status==1
+        set statusline+=%{coc#status()}\ 
+    endif
+    set statusline+=\ %t
+    set statusline+=%m
+    set statusline+=%r
+    set laststatus=2
+
+    function! StatuslineMode()
+        let l:mode=mode()
+        if l:mode==#"n"
+            return "NORMAL"
+        elseif l:mode==?"v"
+            return "VISUAL"
+        elseif l:mode==#"i"
+            return "INSERT"
+        elseif l:mode==#"R"
+            return "REPLACE"
+        elseif l:mode==?"s"
+            return "SELECT"
+        elseif l:mode==#"t"
+            return "TERMINAL"
+        elseif l:mode==#"c"
+            return "COMMAND"
+        elseif l:mode==#"!"
+            return "SHELL"
+        endif
+    endfunction
+endif
