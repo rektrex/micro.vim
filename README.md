@@ -18,4 +18,4 @@ endif
 
 `g:micro_coc_status`: Set to 1 to show `coc#status` in the statusline. Requires `g:micro_theme_statueline` to be set to 1, and [coc.nvim](https://github.com/neoclide/coc.nvim) installed.
 
-* Note: * The options must be set before setting the colorscheme(`colorscheme micro`).
+**Note:** The options must be set before setting the colorscheme(`colorscheme micro`).
