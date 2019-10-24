@@ -124,3 +124,9 @@ if g:micro_theme_statusline==1
         endif
     endfunction
 endif
+
+" JavaScript ------------------------------------------------------------------
+
+hi link javaScriptValue Constant
+hi link javaScriptNumber javaScriptValue
+hi link javaScriptNull javaScriptValue
