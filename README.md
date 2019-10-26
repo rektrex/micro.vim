@@ -1,5 +1,5 @@
 # micro.vim
-A minimal, dark colorscheme for vim on Truecolor terminals.
+A minimal, dark colorscheme for vim on Truecolor terminals. Based on [distilled-vim](https://github.com/KKPMW/distilled-vim).
 
 [screenshot](https://imgur.com/80Lyqw3)
 
